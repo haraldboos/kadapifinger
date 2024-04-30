@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model students {
+  id      Int      @id @default(autoincrement())
+  sinum   Int      @unique
+  stuname String
+  studob  DateTime
+  pnumber BigInt
+  rfidid rfid?
+}
+model studentatamp{
+  atampid Int @id @default(autoincrement())
+  stuindex rfid @relation(fields: [stuin],references: [studentin])
+  stuin Int @unique
+  time DateTime @updatedAt
+  
+
+}
+model rfid {
+  id Int @id @default(autoincrement())
+  rfidvalue BigInt @unique
+  stud students @relation(fields: [studentin],references: [sinum])
+  studentin Int @unique
+  stuatamp studentatamp?
+  
+  
+}
