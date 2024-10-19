@@ -1,6 +1,7 @@
 console.log('kadapi pundai andi')
 // const { Model } = require('objection');
 // const kad = require('knex');
+//ok baby
 const mysql = require('mysql');
 const kadapi = require('net');
 const http = require('http');
